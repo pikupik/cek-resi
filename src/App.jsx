@@ -1,24 +1,27 @@
-import React from 'react';
+import React, { useState } from 'react';
+import Navbar from './components/Navbar';
 import TrackingForm from './components/TrackingForm';
-import Footer from './components/Footer'
-import './App.css';
+import Footer from './components/Footer';
+import QRCodeGenerator from './components/QRCodeGenerator';
+import './App.css'
 
-function App() {
+const App = () => {
+  const [activeComponent, setActiveComponent] = useState('CekResi');
+
+  const handleNavItemClick = (componentName) => {
+    setActiveComponent(componentName);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <h1>Cek Resi Online Cepat</h1>
-      </header>
-      <div className="banner">
-        <p>Tempat iklan Anda di sini!</p>
-      </div>
-      <TrackingForm />
-      <div className="banner">
-        <p>Tempat iklan Anda di sini!</p>
-      </div>
+    <div className="flex flex-col min-h-screen">
+      <Navbar onNavItemClick={handleNavItemClick} />
+      <main className="flex-1 container mx-auto p-4">
+        {activeComponent === 'CekResi' && <TrackingForm />}
+        {activeComponent === 'QRCodeGenerator' && <QRCodeGenerator />}
+      </main>
       <Footer />
     </div>
   );
-}
+};
 
 export default App;
