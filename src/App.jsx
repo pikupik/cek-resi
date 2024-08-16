@@ -3,6 +3,8 @@ import Navbar from './components/Navbar';
 import TrackingForm from './components/TrackingForm';
 import Footer from './components/Footer';
 import QRCodeGenerator from './components/QRCodeGenerator';
+import InfoGempa from './components/InfoGempa.jsx'
+import ProfitCalculator from './components/ProfitCalculator.tsx'
 import './App.css'
 
 const App = () => {
@@ -18,6 +20,8 @@ const App = () => {
       <main className="flex-1 container mx-auto p-4">
         {activeComponent === 'CekResi' && <TrackingForm />}
         {activeComponent === 'QRCodeGenerator' && <QRCodeGenerator />}
+        {activeComponent === 'InfoGempa' && <InfoGempa />}
+        {activeComponent === 'AnalisisProfit' && <ProfitCalculator />}
       </main>
       <Footer />
     </div>
