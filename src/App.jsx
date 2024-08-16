@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import Navbar from './components/Navbar';
-import TrackingForm from './components/TrackingForm';
 import Footer from './components/Footer';
-import QRCodeGenerator from './components/QRCodeGenerator';
-import InfoGempa from './components/InfoGempa.jsx'
-import ProfitCalculator from './components/ProfitCalculator.tsx'
+
+import TrackingForm from './mainfile/TrackingForm.jsx';
+import QRCodeGenerator from './mainfile/QRCodeGenerator.jsx';
+import InfoGempa from './mainfile/InfoGempa.jsx'
+import ProfitCalculator from './mainfile/ProfitCalculator.tsx'
+
 import './App.css'
 
 const App = () => {
