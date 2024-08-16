@@ -27,8 +27,6 @@ const TrackingForm = () => {
     try {
       const response = await axios.get(`https://api.binderbyte.com/v1/track?api_key=${apiKey}&courier=${courier}&awb=${awb}`);
       setResult(response.data.data);
-      setModalMessage('');  // Clear the modal message
-      setShowModal(true);
     } catch (err) {
       setError('Error fetching tracking information');
     }
@@ -68,55 +66,45 @@ const TrackingForm = () => {
           Cek Resi
         </button>
       </form>
+
       {error && <p className="mt-4 text-red-500">{error}</p>}
+
+      {result && (
+        <div className="mt-4">
+          <h3 className="text-lg font-semibold">Status Pengiriman</h3>
+          <p>No Resi: {result.summary.awb}</p>
+          <p>Kurir: {result.summary.courier}</p>
+          <p>Layanan: {result.summary.service}</p>
+          <p>Status: {result.summary.status}</p>
+          <p>Berat: {result.summary.weight}</p>
+          
+          <h3 className="text-lg font-semibold mt-4">Detail Pengiriman</h3>
+          <p>Tujuan: {result.detail.destination}</p>
+          <p>Pengirim: {result.detail.shipper}</p>
+          <p>Penerima: {result.detail.receiver}</p>
+          
+          <h3 className="text-lg font-semibold mt-4">Riwayat Pengiriman</h3>
+          <ul className="space-y-2">
+            {result.history.map((item, index) => (
+              <li key={index} className="bg-gray-100 p-3 rounded-md">
+                <p className="font-bold">Tanggal: {item.date}</p>
+                <p className="text-sm">Deskripsi: {item.desc}</p>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
 
       {showModal && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center">
           <div className="bg-white p-6 rounded-lg shadow-lg max-w-lg w-full">
-            {modalMessage ? (
-              <div>
-                <p>{modalMessage}</p>
-                <button 
-                  onClick={closeModal}
-                  className="mt-4 w-full py-3 bg-blue-500 text-white rounded-md hover:bg-blue-600 transition duration-200"
-                >
-                  Tutup
-                </button>
-              </div>
-            ) : (
-              <div>
-                <h3 className="text-lg font-semibold">Status Pengiriman</h3>
-                <p>No Resi: {result.summary.awb}</p>
-                <p>Kurir: {result.summary.courier}</p>
-                <p>Layanan: {result.summary.service}</p>
-                <p>Status: {result.summary.status}</p>
-                <p>Berat: {result.summary.weight}</p>
-                
-                <h3 className="text-lg font-semibold mt-4">Detail Pengiriman</h3>
-                <p>Tujuan: {result.detail.destination}</p>
-                <p>Pengirim: {result.detail.shipper}</p>
-                <p>Penerima: {result.detail.receiver}</p>
-                
-                <h3 className="text-lg font-semibold mt-4">Riwayat Pengiriman</h3>
-                <ul className="space-y-2">
-                  {result.history.map((item, index) => (
-                    <li key={index} className="bg-gray-100 p-3 rounded-md">
-                      <p className="font-bold">Tanggal: {item.date}</p>
-                      <p className="text-sm">Deskripsi: {item.desc}</p>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            )}
-
-            {!modalMessage && (
-              <button 
-                onClick={closeModal}
-                className="mt-4 w-full py-3 bg-red-500 text-white rounded-md hover:bg-red-600 transition duration-200"
-              >
-                Tutup
-              </button>
-            )}
+            <p>{modalMessage}</p>
+            <button 
+              onClick={closeModal}
+              className="mt-4 w-full py-3 bg-blue-500 text-white rounded-md hover:bg-blue-600 transition duration-200"
+            >
+              Tutup
+            </button>
           </div>
         </div>
       )}
