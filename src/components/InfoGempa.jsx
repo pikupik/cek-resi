@@ -52,6 +52,7 @@ const InfoGempa = () => {
               />
             </div>
           )}
+          <p className="text-center italic"><strong>Copyright ® BMKG (Badan Meteorologi, Klimatologi  Dan Geofisika)</strong></p>
         </div>
       ) : (
         <p>Loading...</p>
