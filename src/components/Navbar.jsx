@@ -53,6 +53,12 @@ const Navbar = ({ onNavItemClick }) => {
                 >
                   Analisa Profit (1 minggu)
                 </button>
+                <button
+                  onClick={() => handleNavClick('AirQty')}
+                  className="block text-white py-2 px-4 hover:bg-blue-700 w-full text-left focus:outline-none"
+                >
+                  Air Quality Check
+                </button>
               </div>
             )}
           </div>
@@ -111,6 +117,12 @@ const Navbar = ({ onNavItemClick }) => {
                   className="block text-white py-2 px-4 hover:bg-blue-700 w-full text-left focus:outline-none"
                 >
                   Analisa Profit (1 Minggu)
+                </button>
+                <button
+                  onClick={() => handleNavClick('AirQty')}
+                  className="block text-white py-2 px-4 hover:bg-blue-700 w-full text-left focus:outline-none"
+                >
+                  Air Quality Check
                 </button>
               </div>
             )}

@@ -6,6 +6,7 @@ import TrackingForm from './mainfile/TrackingForm.jsx';
 import QRCodeGenerator from './mainfile/QRCodeGenerator.jsx';
 import InfoGempa from './mainfile/InfoGempa.jsx'
 import ProfitCalculator from './mainfile/ProfitCalculator.tsx'
+import AirQuality from './mainfile/AirQuality.jsx'
 
 import './App.css'
 
@@ -24,6 +25,7 @@ const App = () => {
         {activeComponent === 'QRCodeGenerator' && <QRCodeGenerator />}
         {activeComponent === 'InfoGempa' && <InfoGempa />}
         {activeComponent === 'AnalisisProfit' && <ProfitCalculator />}
+        {activeComponent === 'AirQty' && <AirQuality />}
       </main>
       <Footer />
     </div>
